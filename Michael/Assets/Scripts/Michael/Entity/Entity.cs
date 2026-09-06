@@ -1,4 +1,5 @@
 using Michael.Animation;
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Assertions;
@@ -8,6 +9,8 @@ namespace Michael
 {
     public class Entity : MonoBehaviour
     {
+        public event Action OnFlipped;
+
         internal Rigidbody2D rb { get; private set; }
         protected StateMachine stateMachine;
         internal Animator Anim { get; private set; }
@@ -122,6 +125,7 @@ namespace Michael
         {
             transform.Rotate(0, 180, 0);
             FaceDirection = -FaceDirection;
+            OnFlipped?.Invoke();
         }
 
         private void UpdateCollisionDetection()

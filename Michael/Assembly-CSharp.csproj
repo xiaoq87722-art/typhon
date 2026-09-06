@@ -91,6 +91,7 @@
     <Compile Include="Assets\Scripts\Michael\Animation\Enemy\EnemyStunnedState.cs" />
     <Compile Include="Assets\Scripts\Michael\Player\Player.cs" />
     <Compile Include="Assets\Scripts\Michael\VFXAutoController.cs" />
+    <Compile Include="Assets\Scripts\Michael\UI\UIMiniHealthBar.cs" />
     <Compile Include="Assets\Scripts\Michael\Animation\Enemy\EnemyState.cs" />
     <Compile Include="Assets\Scripts\Michael\Animation\Enemy\EnemyDeadState.cs" />
     <Compile Include="Assets\Scripts\Michael\Animation\Player\PlayerCounterAttackState.cs" />

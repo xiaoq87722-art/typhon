@@ -1,11 +1,11 @@
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Assertions;
+using UnityEngine.UI;
 
 namespace Michael
 {
     public class EntityHealth : MonoBehaviour, IDamagable
     {
+        private Slider healthBar;
         private EntityVFX entityVFX;
         private EntitySFX entityAudio;
         private Entity entity;
@@ -29,7 +29,9 @@ namespace Michael
             entityVFX = GetComponent<EntityVFX>();
             entityAudio = GetComponent<EntitySFX>();
             entity = GetComponent<Entity>();
+            healthBar = GetComponentInChildren<Slider>();
             CurrentHP = MaxHP;
+            UpdateHealthBar();
         }
 
         public virtual void TakeDamage(float damage, Transform damageDealer)
@@ -49,6 +51,7 @@ namespace Michael
         protected void ReduceHP(float damage)
         {
             CurrentHP -= damage;
+            UpdateHealthBar();
             if (CurrentHP <= 0)
             {
                 Die();
@@ -85,6 +88,14 @@ namespace Michael
         private bool IsHeavyDamage(float damage)
         {
             return damage / MaxHP >= HeavyDamageThreshold;
+        }
+
+        private void UpdateHealthBar()
+        {
+            if (healthBar != null)
+            {
+                healthBar.value = CurrentHP / MaxHP;
+            }
         }
     }
 }
